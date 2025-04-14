@@ -1,7 +1,6 @@
 # mint-backgrounds
 
 ![AUR version](https://img.shields.io/aur/version/mint-backgrounds?label=AUR)
-[![Build Status](https://drone.cryptic.systems/api/badges/volker.raschek/mint-backgrounds-pkg/status.svg)](https://drone.cryptic.systems/volker.raschek/mint-backgrounds-pkg)
 ![AUR votes](https://img.shields.io/aur/votes/mint-backgrounds)
 
 This repository contains build files to build the Arch Linux package `mint-backgrounds`. Instead of building the
