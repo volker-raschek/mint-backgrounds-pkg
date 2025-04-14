@@ -1,0 +1,36 @@
+name: Markdown linter
+
+on:
+  pull_request:
+    types: [ "opened", "reopened", "synchronize" ]
+  push:
+    tags:
+    - '**'
+
+jobs:
+  markdown-lint:
+    env:
+      AUR_SSH_KEY: ${{ secrets.AUR_SSH_KEY }}
+    runs-on:
+    - ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4.2.2
+    - name: Configure SSH client
+      run: |
+        mkdir ~/.ssh
+        chmod 0700 ~/.ssh
+
+        echo "${AUR_SSH_KEY}" | base64 --decode > ~/.ssh/id
+        chmod 0600 ~/.ssh/id
+
+        cat > ~/.ssh/config <<EOF
+        Host *
+          IdentityFile ~/.ssh/id
+          StrictHostKeyChecking no
+        EOF
+    - name: Push
+      run: |
+        git push ssh://aur@aur.archlinux.org/mint-backgrounds.git
+    - name: Remove SSH client configuration
+      run: |
+        rm -rf ~/.ssh

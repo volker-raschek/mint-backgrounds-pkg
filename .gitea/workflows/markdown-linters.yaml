@@ -19,4 +19,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4.2.2
     - name: Lint Markdown files
-      run: markdownlint .
+      run: markdownlint --config .markdownlint.yaml .
