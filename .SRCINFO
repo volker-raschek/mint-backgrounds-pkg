@@ -1,7 +1,7 @@
 pkgbase = mint-backgrounds
 	pkgdesc = The backgrounds of Linux Mint
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = Various
 	depends = mint-backgrounds-helena

@@ -15,9 +15,11 @@ jobs:
     - ubuntu-latest
     steps:
     - uses: actions/checkout@v4.2.2
+      with:
+        fetch-depth: 0
     - name: Configure SSH client
       run: |
-        mkdir ~/.ssh
+        mkdir ~/.ssh || true
         chmod 0700 ~/.ssh
 
         echo "${AUR_SSH_KEY}" | base64 --decode > ~/.ssh/id
@@ -30,7 +32,7 @@ jobs:
         EOF
     - name: Push
       run: |
-        git push ssh://aur@aur.archlinux.org/mint-backgrounds.git
+        git push ssh://aur@aur.archlinux.org/mint-backgrounds.git 'HEAD:refs/heads/master'
     - name: Remove SSH client configuration
       run: |
         rm -rf ~/.ssh
